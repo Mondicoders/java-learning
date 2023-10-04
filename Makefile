@@ -7,7 +7,8 @@ JPARAMS = -d target
 	$(JC) $(JPARAMS) $*.java
 
 CLASSES = \
-					HelloWorld.java
+					HelloWorld.java\
+					Arr.java
 
 
 default: classes

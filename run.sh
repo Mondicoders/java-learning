@@ -1,1 +1,1 @@
-javac -d target *.java && cd target && java $1
+make && make run ARGS="$1"
