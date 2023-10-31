@@ -50,7 +50,7 @@ public class MyScanner implements AutoCloseable {
     }
 
     @Override
-    public void close() throws Exception {
+    public void close() throws IOException {
         reader.close();
     }
 
@@ -58,9 +58,9 @@ public class MyScanner implements AutoCloseable {
         if (position >= length) {
             length = reader.read(buffer);
             position = 0;
-            return true;
-        }
-        return false;
+        	return length > 0;
+		}
+        return true;
     }
 
     private static boolean isSeparator(char ch) {
@@ -71,14 +71,20 @@ public class MyScanner implements AutoCloseable {
 
 
     private String nextLineToken() throws IOException {   
-        builder.setLength(0);
+        if (!updateBuffer()) {
+			return null;
+		}
+		builder.setLength(0);
         while (position < length || updateBuffer()) {
-            char ch = buffer[position];
+			char ch = buffer[position];
             position++;
             if (mode == LineMode.LF && ch != '\n'
                 || mode == LineMode.CR && ch != '\r'
                 || mode == LineMode.CRLF && ch != '\r' && ch != '\n') {
                     builder.append(ch);
+					if (mode == LineMode.CRLF) {
+						isPrevCRLF = false;
+					}
                 } else if (builder.isEmpty()) {
                     if (mode == LineMode.CRLF) {
                         if (isPrevCRLF) {
