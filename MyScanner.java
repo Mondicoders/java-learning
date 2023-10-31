@@ -6,10 +6,10 @@ import java.util.NoSuchElementException;
 import java.io.Reader;
 
 public class MyScanner implements AutoCloseable {
-    private enum LineMode {
-        CR,
-        LF,
-        CRLF
+	private enum LineMode {
+        CR, // \r
+        LF, // \n
+        CRLF // \r\n
     }
     private final Reader reader;
     private LineMode mode;
@@ -24,22 +24,22 @@ public class MyScanner implements AutoCloseable {
     private boolean isTokenReaded;
     private final StringBuilder builder = new StringBuilder();
 
-    public MyScanner(Reader reader) {
+    public MyScanner(Reader reader) { // ctor
         this.reader = reader;
         getSystemLineSeparator();
     }
 
-    public MyScanner(InputStream stream) {
+    public MyScanner(InputStream stream) { // ctor
         this.reader = new InputStreamReader(stream);
         getSystemLineSeparator();
     }
 
-    public MyScanner(String source) {
+    public MyScanner(String source) { // ctor
         this.reader = new StringReader(source);
         getSystemLineSeparator();
     }
 
-    private void getSystemLineSeparator() {
+    private void getSystemLineSeparator() { // get line seprator in system
         if (System.lineSeparator() == "\n") {
             mode = LineMode.LF;
         } else if (System.lineSeparator() == "\r") {
@@ -63,7 +63,7 @@ public class MyScanner implements AutoCloseable {
         return false;
     }
 
-    private boolean isSeparator(char ch) {
+    private static boolean isSeparator(char ch) {
         int type = Character.getType(ch);
         return type == Character.SPACE_SEPARATOR || type == Character.CONTROL
             || type == Character.PARAGRAPH_SEPARATOR || type == Character.LINE_SEPARATOR;
