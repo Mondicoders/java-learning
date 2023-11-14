@@ -22,4 +22,9 @@ public class Triangle extends Shape {
         double semi = perimeter() / 2;
         return Math.sqrt(semi * (semi - a) * (semi - b) * (semi - c));
     }
+
+    @Override
+    public void abc() {
+
+    }
 }

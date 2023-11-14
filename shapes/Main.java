@@ -50,5 +50,8 @@ public class Main {
                 System.out.println("    S = " + shape.area());
             }
         }
+        {
+            final List<ShapeMethods> shapes = new ArrayList<>();
+        }
     }
 }
