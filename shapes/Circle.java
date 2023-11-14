@@ -17,4 +17,9 @@ public class Circle extends Shape {
     public double area() {
         return Math.PI * r * r;
     }
+
+    @Override
+    public String toString() {
+        return "This is a circle with name: " + this.name; // To do this we need make name protected
+    }
 }
