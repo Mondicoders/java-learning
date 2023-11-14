@@ -20,6 +20,18 @@ public class Main {
             System.out.println(rect.perimeter()); // 10
             System.out.println(rect.area()); // 6
         }
+        System.out.println("=====CASTING=====");
+        {
+            Rectangle rect = new Rectangle("rect", 2, 2);
+            Shape shape = (Shape)rect;
+            System.out.println(shape); // rect
+            System.out.println(shape.perimeter()); // 10
+            System.out.println(shape.area()); // 6
+            ShapeMethods methods = (ShapeMethods)rect;
+            System.out.println(methods); // rect
+            System.out.println(methods.perimeter()); // 10
+            System.out.println(methods.area()); // 6
+        }
         System.out.println("=====LIST OF SHAPES=====");
         {
             final Scanner scanner = new Scanner(System.in);

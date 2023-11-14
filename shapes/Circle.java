@@ -24,7 +24,7 @@ public class Circle extends Shape {
     }
 
     @Override
-    public void abc() {
-
+    public String abc() {
+        return "This is a circle with name: " + this.name; // To do this we need make name protected
     }
 }

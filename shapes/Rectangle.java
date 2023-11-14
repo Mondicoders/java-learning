@@ -21,7 +21,8 @@ public class Rectangle extends Shape {
     }
 
     @Override
-    public void abc() {
+    public String abc() {
 
+        return null;
     }
 }

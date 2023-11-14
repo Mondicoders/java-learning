@@ -12,5 +12,5 @@ public abstract class Shape implements ShapeMethods {
         return name;
     }
 
-    public abstract void abc();
+    public abstract String abc();
 }
